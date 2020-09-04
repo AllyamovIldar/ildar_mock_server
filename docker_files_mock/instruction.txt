@@ -1,0 +1,26 @@
+1. Скачать исходники
+2. Запустить CMD
+3. Перейти в папку с исходниками (например, cd /d  F:\Other\docker_files_mock)
+4. Запустить сборку образа: docker build -t ildarmock .
+5. Запустить контейнер: docker run -d -p 8080:80 ildarmock
+***
+6. Просмотреть запущенные контейнеры: docker ps -a
+7. Зайти в контейнер, вставив перед /bin/bash CONTAINER ID или NAMES, соответствующего контейнера: docker exec -it 25a4cf47f5a0 /bin/bash
+8. Ввести top и убедиться в запущенных процессах java и nginx
+***
+6. Ввести в адресной строке следующее:
+- http://localhost:8080/static/index.html
+- http://localhost:8080/static/image.jpg
+- http://localhost:8080/static/text.txt
+7. Ввести в Postman следующие запросы:
+- GET http://localhost:8080/mock/get_employee
+- DELETE http://localhost:8080/mock/delete_employee?id=1011212
+Params: 
+KEY id 
+VALUE 1011212
+- POST http://localhost:8080/mock/create_employee
+Body: 
+{
+    "fio": "Аллямов Ильдар Зиннятуллаевич",
+    "position": "Специалист по тестированию"
+}
