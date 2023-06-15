@@ -26,8 +26,8 @@ public class TestRestInTestJava extends TestCase {
     public void test_status_create_employee() {
         given()
                 .body("{\n" +
-                        "    \"fio\": \"Аллямов Ильдар Зиннятуллаевич\",\n" +
-                        "    \"position\": \"Специалист по тестированию\"\n" +
+                        "    \"fio\": \"Alliamov Ildar Zinniatullaevich\",\n" +
+                        "    \"position\": \"QA Engineer\"\n" +
                         "}")
                 .contentType("application/json")
                 .when()
@@ -71,8 +71,8 @@ public class TestRestInTestJava extends TestCase {
     public void test_validate_post_json() {
         given()
                 .body("{\n" +
-                        "    \"fio\": \"Аллямов Ильдар Зиннятуллаевич\",\n" +
-                        "    \"position\": \"Специалист по тестированию\"\n" +
+                        "    \"fio\": \"Alliamov Ildar Zinniatullaevich\",\n" +
+                        "    \"position\": \"QA Engineer\"\n" +
                         "}")
                 .contentType("application/json")
                 .when()
@@ -80,8 +80,8 @@ public class TestRestInTestJava extends TestCase {
                 .then()
                 .assertThat()
                 .statusCode(201)
-                .body("fio", equalTo("Аллямов Ильдар Зиннятуллаевич"))
-                .body("position", equalTo("Специалист по тестированию"))
+                .body("fio", equalTo("Alliamov Ildar Zinniatullaevich"))
+                .body("position", equalTo("QA Engineer"))
                 .body("number", notNullValue());
 
     }
@@ -94,8 +94,8 @@ public class TestRestInTestJava extends TestCase {
                 .assertThat()
                 .statusCode(200)
                 .body("id", equalTo("101"))
-                .body("fio", equalTo("Иванов Иван Иванович"))
-                .body("position", equalTo("Специалист по тестированию"))
+                .body("fio", equalTo("Ivanov Ivan Ivanovich"))
+                .body("position", equalTo("QA engineer"))
                 .body("number", equalTo("1024"));
     }
 
