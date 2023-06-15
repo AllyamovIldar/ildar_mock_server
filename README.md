@@ -43,7 +43,7 @@ This is a tutorial project that is a service. It consists of an nginx server tha
 5. Run Container:
    `docker run -d -p 8080:80 ildarmock`
 
-## Manual health check (after service startup)
+## Manual workability check (after service startup)
 
 :white_check_mark: 1. Use your browser to go to the following links:
 ____
@@ -131,7 +131,7 @@ ____
 
 Where the value of the "number" field is a randomly generated uuid.
 
-## Checking the health using autotests (after starting the service)
+## Verify that the service is working with autotests (after the service starts)
 
 1. Download the source folders of the project (everything except *docker_files_mock*, *README.md*) to your local machine.
 2. Open the project in IntelliJ IDEA
