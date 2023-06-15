@@ -9,8 +9,6 @@
         <module name="mock_server_ildar" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="11">
-      <module name="mock_server_ildar" target="1.5" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="11" />
   </component>
 </project>

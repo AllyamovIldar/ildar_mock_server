@@ -22,12 +22,15 @@
 //import java.io.IOException;
 //import java.lang.Object;
 //import org.junit.Assert;
-import static io.restassured.RestAssured.*;
+
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import org.junit.Test;
+
+import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.when;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
-import io.restassured.http.ContentType;
-import io.restassured.RestAssured;
-import org.junit.Test;
 
 public class TestRestInTestJava {
     @Test
@@ -37,6 +40,7 @@ public class TestRestInTestJava {
                 .assertThat()
                 .statusCode(200);
     }
+
     @Test
     public void test_status_delete_employee() {
         RestAssured.when().delete("http://localhost:8080/mock/delete_employee")
@@ -44,8 +48,9 @@ public class TestRestInTestJava {
                 .assertThat()
                 .statusCode(200);
     }
+
     @Test
-    public void test_status_create_employee(){
+    public void test_status_create_employee() {
         given()
                 .body("{\n" +
                         "    \"fio\": \"Аллямов Ильдар Зиннятуллаевич\",\n" +
@@ -58,8 +63,9 @@ public class TestRestInTestJava {
                 .statusCode(201);
 
     }
+
     @Test
-    public void test_validate_file_html(){
+    public void test_validate_file_html() {
         when()
                 .get("http://localhost:8080/static/index.html")
                 .then()
@@ -82,7 +88,7 @@ public class TestRestInTestJava {
     }
 
     @Test
-    public void test_validate_file_txt(){
+    public void test_validate_file_txt() {
         when()
                 .get("http://localhost:8080/static/text.txt")
                 .then()
@@ -91,6 +97,7 @@ public class TestRestInTestJava {
                 .extract()
                 .response();
     }
+
     @Test
     public void test_validate_post_json() {
         given()
@@ -109,6 +116,7 @@ public class TestRestInTestJava {
                 .body("number", notNullValue());
 
     }
+
     @Test
     public void test_validate_get_json() {
         given()
@@ -122,6 +130,7 @@ public class TestRestInTestJava {
                 .body("position", equalTo("Специалист по тестированию"))
                 .body("number", equalTo("1024"));
     }
+
     @Test
     public void test_validate_delete_json() {
         int delId = 1;
