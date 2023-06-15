@@ -18,8 +18,8 @@ public class MockServer {
     }
 
     public static void createWireMockStub() {
-        String fio = "Иванов Иван Иванович";
-        String position = "Специалист по тестированию";
+        String fio = "Ivanov Ivan Ivanovich";
+        String position = "QA engineer";
         int number = 1024;
         int id = 101;
 

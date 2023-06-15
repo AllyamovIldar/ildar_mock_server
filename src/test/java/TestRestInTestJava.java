@@ -1,55 +1,28 @@
-//import io.restassured.RestAssured.*;
-//import io.restassured.matcher.RestAssuredMatchers.*;
-//import io.restassured.response.Response;
-//import io.restassured.specification.RequestSpecification;
-//import junit.framework.TestSuite;
-//import net.minidev.json.JSONObject;
-//import org.apache.commons.io.FileUtils;
-//import org.apache.http.HttpStatus;
-//import org.apache.tools.ant.types.resources.AbstractClasspathResource;
-//import org.hamcrest.Matchers.*;
-//import io.restassured.module.jsv.JsonSchemaValidator.*;
-//import io.restassured.matcher.RestAssuredMatchers;
-//import org.springframework.core.io.ClassPathResource;
-//import java.io.File;
-//import java.net.MalformedURLException;
-//import java.net.URL;
-//import java.nio.channels.Channel;
-//import java.nio.channels.Channels;
-//import java.nio.channels.ReadableByteChannel;
-//import java.io.BufferedInputStream;
-//import java.io.FileOutputStream;
-//import java.io.IOException;
-//import java.lang.Object;
-//import org.junit.Assert;
-
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import org.junit.Test;
+import junit.framework.TestCase;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.when;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 
-public class TestRestInTestJava {
-    @Test
+public class TestRestInTestJava extends TestCase {
+    @org.testng.annotations.Test
     public void test_status_get_employee() {
         RestAssured.when().get("http://localhost:8080/mock/get_employee")
                 .then()
                 .assertThat()
                 .statusCode(200);
     }
-
-    @Test
+    @org.testng.annotations.Test
     public void test_status_delete_employee() {
         RestAssured.when().delete("http://localhost:8080/mock/delete_employee")
                 .then()
                 .assertThat()
                 .statusCode(200);
     }
-
-    @Test
+    @org.testng.annotations.Test
     public void test_status_create_employee() {
         given()
                 .body("{\n" +
@@ -63,8 +36,7 @@ public class TestRestInTestJava {
                 .statusCode(201);
 
     }
-
-    @Test
+    @org.testng.annotations.Test
     public void test_validate_file_html() {
         when()
                 .get("http://localhost:8080/static/index.html")
@@ -74,8 +46,7 @@ public class TestRestInTestJava {
                 .extract()
                 .response();
     }
-
-    @Test
+    @org.testng.annotations.Test
     public void test_validate_file_jpg() {
         when()
                 .get("http://localhost:8080/static/image.jpg")
@@ -86,8 +57,7 @@ public class TestRestInTestJava {
                 .extract()
                 .response();
     }
-
-    @Test
+    @org.testng.annotations.Test
     public void test_validate_file_txt() {
         when()
                 .get("http://localhost:8080/static/text.txt")
@@ -97,8 +67,7 @@ public class TestRestInTestJava {
                 .extract()
                 .response();
     }
-
-    @Test
+    @org.testng.annotations.Test
     public void test_validate_post_json() {
         given()
                 .body("{\n" +
@@ -116,8 +85,7 @@ public class TestRestInTestJava {
                 .body("number", notNullValue());
 
     }
-
-    @Test
+    @org.testng.annotations.Test
     public void test_validate_get_json() {
         given()
                 .when()
@@ -131,7 +99,7 @@ public class TestRestInTestJava {
                 .body("number", equalTo("1024"));
     }
 
-    @Test
+    @org.testng.annotations.Test
     public void test_validate_delete_json() {
         int delId = 1;
         given()
@@ -139,7 +107,7 @@ public class TestRestInTestJava {
                 .with()
                 .queryParam("id", delId)
                 .when()
-                .delete("http://localhost:8080/mock/delete_employee?id=" + String.valueOf(delId))
+                .delete("http://localhost:8080/mock/delete_employee?id=" + delId)
                 .then()
                 .assertThat()
                 .statusCode(200)
